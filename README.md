@@ -5,12 +5,12 @@ Written for [GeomLab](http://www.cs.ox.ac.uk/geomlab/home.html).
 ## Implementation
 The heap is represented by a `[t, lvl, spc, occ]` 4-tuple.
  * `t` is the binary tree, represented in Geomlab using nested lists:
-    * Each node is a 3-tuple containing, its element, left subtree, and right subtree: `[el, l, r]`
-    * Each leaf represented, for uniformity, as a node with empty subtrees: `[el, [], []]`
+    * Each node is a 3-tuple containing its element, left subtree, and right subtree: `[el, l, r]`
+    * Each leaf is represented, for uniformity, as a node with empty subtrees: `[el, [], []]`
  * `lvl` is the level of the tree that the next element will be inserted into.
  * `spc` is the total amount of space in the level currently being filled.
-    * Always `2^lvl`, but is saved for convenience, to avoid recalculting it on every insertion, as I am unaware of
-      a bitshifting operator in Geomlab.
+    * This is always `2^lvl`, but is saved for convenience, to avoid recalculting it on every insertion, as I am
+      unaware of a bitshifting operator in Geomlab.
  * `occ` is the occupancy of the level being filled.
     * Always in the range `[0..spc)` because as soon as the current level is entirely filled, we immediately move
      on to filling the next layer.

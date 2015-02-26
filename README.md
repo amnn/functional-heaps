@@ -8,10 +8,10 @@ The heap is represented by a `[t, lvl, spc, occ]` 4-tuple.
     * Each node is a 3-tuple containing, its element, left subtree, and right subtree: `[el, l, r]`
     * Each leaf represented, for uniformity, as a node with empty subtrees: `[el, [], []]`
  * `lvl` is the level of the tree that the next element will be inserted into.
- * `spc` is the total amount of space in the level currently being filled 
+ * `spc` is the total amount of space in the level currently being filled.
     * Always `2^lvl`, but is saved for convenience, to avoid recalculting it on every insertion, as I am unaware of
       a bitshifting operator in Geomlab.
- * `occ` is the occupancy of the level being filled
+ * `occ` is the occupancy of the level being filled.
     * Always in the range `[0..spc)` because as soon as the current level is entirely filled, we immediately move
      on to filling the next layer.
 
@@ -20,7 +20,7 @@ Return the value of the root node of the tree.
 
 ### `insert(x,h)`
  * Find the "next" free space in `h` (the left-most free space in the level being filled).
- * Insert `x` at that position.
+ * Insert `x` at that position. (`_insert`)
  * Bubble `x` up if its value is greater than its parent. (`bubblel`, `bubbler`)
  * Update `lvl`, `spc`, and `occ` to reflect the increase in the heap size.
 
